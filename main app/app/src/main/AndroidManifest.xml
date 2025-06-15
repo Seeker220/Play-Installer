@@ -1,0 +1,35 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.seeker.playinstaller">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Required for querying other apps on Android 11+ -->
+    <queries>
+        <!-- Discover all apps with launcher activities -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+    <application
+        android:allowBackup="true"
+        android:label="Play Installer"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Transparent">
+
+        <activity android:name=".MainActivity"
+            android:exported="true">
+
+            <!-- Open With APK Support ONLY -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:mimeType="application/vnd.android.package-archive" />
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>
